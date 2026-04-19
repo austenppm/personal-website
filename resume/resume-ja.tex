@@ -1,0 +1,209 @@
+% !TEX program = xelatex
+% 職務経歴書 — Modern Japanese CV for Pyii Phyo Maung
+% Compile with: xelatex resume-ja.tex
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=0.7in]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Helvetica Neue}[Scale=0.95]
+\setCJKmainfont{Hiragino Mincho ProN}[BoldFont={Hiragino Mincho ProN W6}]
+\setCJKsansfont{Hiragino Sans}
+
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{parskip}
+
+\definecolor{accent}{HTML}{D96C2B}
+\definecolor{fg}{HTML}{1C1410}
+\definecolor{muted}{HTML}{6B6660}
+
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
+
+\titleformat{\section}
+  {\color{accent}\sffamily\large\bfseries}
+  {}{0pt}{}
+  [\vspace{-6pt}\color{accent!40}\hrulefill\vspace{-2pt}]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+\newcommand{\role}[4]{%
+  \noindent
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l r}
+    \textbf{#1} \textcolor{muted}{｜} #2 & \textcolor{muted}{#3}\\[-1pt]
+    \textcolor{muted}{\small #4} &
+  \end{tabular*}\par\vspace{-2pt}
+}
+
+\newcommand{\project}[4]{%
+  \noindent
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l r}
+    \textbf{#1} \textcolor{muted}{｜} \textit{\small #2} & \href{#4}{\small\color{accent} #3}\\
+  \end{tabular*}\par\vspace{-2pt}
+}
+
+\newenvironment{bullets}
+  {\begin{itemize}[leftmargin=1.1em, itemsep=1pt, parsep=0pt, topsep=2pt]}
+  {\end{itemize}}
+
+\setlength{\parindent}{0pt}
+\pagenumbering{gobble}
+
+\begin{document}
+\color{fg}
+
+\begin{center}
+  {\Huge\bfseries\sffamily ピー フォー マウン}\\[3pt]
+  {\normalsize Pyii Phyo Maung}\\[4pt]
+  {\color{muted}\large ソフトウェアエンジニア・京都大学 計算機科学コース 学部生}\\[8pt]
+  \small
+  \faEnvelope[regular]\ \href{mailto:austenppm12345.career@gmail.com}{austenppm12345.career@gmail.com}
+  \quad\textcolor{muted}{｜}\quad
+  \faGithub\ \href{https://github.com/austenppm}{github.com/austenppm}
+  \quad\textcolor{muted}{｜}\quad
+  \faLinkedin\ \href{https://www.linkedin.com/in/pyii-phyo-maung-70435017a/}{LinkedIn}
+  \quad\textcolor{muted}{｜}\quad
+  \faGlobe\ \href{https://pyiiphyomaung.com}{pyiiphyomaung.com}
+  \\[2pt]
+  \faMapMarker*\ \textcolor{muted}{京都府京都市}
+\end{center}
+
+\vspace{4pt}
+
+\section{学歴}
+
+\role
+  {工学士（計算機科学）在学中}
+  {京都大学}
+  {2020年4月 〜 現在}
+  {工学部 情報学科 計算機科学コース}
+\begin{bullets}
+  \item 履修領域：コンパイラ、計算機アーキテクチャ、オペレーティングシステム、アルゴリズム、信号・画像処理、デジタル回路設計。
+  \item 授業・演習課題として OCaml・Verilog・C・Python で多数のプロジェクトを制作（詳細は〈プロジェクト〉参照）。
+\end{bullets}
+
+\role
+  {高校卒業}
+  {Yangon International School}
+  {2013年 〜 2019年}
+  {ミャンマー ヤンゴン}
+
+\section{研究}
+
+\role
+  {\textit{Scaling MARL-CPC: Achieving Decentralized Coordination in Multi-Agent Environments}}
+  {学士論文}
+  {2026年2月}
+  {記号創発システム研究室（谷口 忠大 教授）、京都大学}
+\begin{bullets}
+  \item マルチエージェント強化学習における創発コミュニケーションの変分的枠組み MARL-CPC を、2エージェント・1ラウンド設定から3〜5エージェントのマルチラウンドメッセージ交換へと拡張。
+  \item CPC 損失の2戦略（\textit{Final Round} と \textit{Every Round}）を比較。非協力的 Bandit 協調タスクにおいて、エージェント数が増えるほど \textit{Every Round}（各ラウンド累積損失）の優位性が拡大することを示した。
+  \item 学習・評価パイプラインを PyTorch で実装し、2〜5エージェントの実験を複数シードで実施。学習曲線・最終報酬の比較を通じて、ラウンドごとの密な学習信号がスケーリングに不可欠であることを実証。
+\end{bullets}
+
+\section{職務経歴}
+
+\role
+  {ソフトウェアエンジニア}
+  {株式会社 Senren}
+  {2025年9月 〜 現在}
+  {アルバイト・ハイブリッド勤務／学業と並行}
+\begin{bullets}
+  \item GCP 上でのフルスタック開発と業務自動化。要件定義・実装・デプロイ・運用まで一気通貫で担当。
+  \item 使用技術：Next.js / React（フロントエンド）、FastAPI / Python（バックエンド）、Playwright（自動化）、Cloud SQL（PostgreSQL）、Cloud Run（オーケストレーション）。
+\end{bullets}
+
+\role
+  {英語個人講師}
+  {個人契約（マンツーマン）}
+  {2023年（約半年間）}
+  {京都・高校生対象}
+\begin{bullets}
+  \item 日本人高校生を対象に、読解・ライティング・会話を含むマンツーマンの英語指導を実施。生徒ごとに教材・進度をカスタマイズ。
+\end{bullets}
+
+\role
+  {ローカルツアーガイド}
+  {City Unscripted}
+  {2023年8月 〜 現在}
+  {京都}
+\begin{bullets}
+  \item 海外からの観光客向けに、英語でのオーダーメイド・ウォーキングツアーを担当。
+  \item ゲストの興味・体力・天候に応じてルートをその場で組み立て、柔軟に対応。
+\end{bullets}
+
+\role
+  {ソフトウェアエンジニア（インターンシップ）}
+  {コニカミノルタ株式会社 — tomoLinks}
+  {2022年8月}
+  {東京}
+\begin{bullets}
+  \item 教育現場向け EdTech プラットフォーム tomoLinks の開発チームに短期参加。
+  \item 社員エンジニアと並行して機能開発・不具合調査を担当。
+\end{bullets}
+
+\role
+  {ホテルスタッフ}
+  {三井ガーデンホテル}
+  {2022年9月 〜 2023年1月}
+  {京都・アルバイト}
+
+\role
+  {ホールスタッフ（接客）}
+  {そわか — 懐石料理店（京都・祇園）}
+  {2022年10月}
+  {京都}
+\begin{bullets}
+  \item 祇園の旅館「そわか」内の懐石料理店にてホール・接客を担当。敬語と日本のホスピタリティを現場で習得。
+\end{bullets}
+
+\section{主なプロジェクト}
+
+\project{Rutilea Music}{Python, LLM, マルチモーダル}{github.com/austenppm/rutileamusic}{https://github.com/austenppm/rutileamusic}
+\begin{bullets}
+  \item 写真の雰囲気に合う楽曲を LLM が選ぶアプリ。マルチモーダルなプロンプトとムードベースの楽曲検索を試作。
+\end{bullets}
+
+\project{OCaml インタプリタ}{OCaml、プログラミング言語論、コンパイラ}{github.com/austenppm/interpreter}{https://github.com/austenppm/interpreter}
+\begin{bullets}
+  \item ML のサブセット向けインタプリタをゼロから実装。字句解析・構文解析・型推論・評価までを自前で構築。
+\end{bullets}
+
+\project{SIMPLE CPU}{Verilog、ハードウェア}{github.com/austenppm/simpleausten}{https://github.com/austenppm/simpleausten}
+\begin{bullets}
+  \item 京大のコンピュータアーキテクチャの授業で、Verilog によるシンプルなパイプライン CPU を実装。自作 ISA をエンドツーエンドで実行。
+\end{bullets}
+
+\project{Life Quest}{Flutter, Dart, Firebase}{}{}
+\begin{bullets}
+  \item 日々の習慣を RPG 化するライフ・ゲーミフィケーションアプリ。D\&D 風の10種類のステータス、XP／ストリーク管理、AI によるステータス自動判定、マルチステップのクエスト機能などを搭載。
+\end{bullets}
+
+\project{オフライン LaTeX コンパイラ}{Node.js, React, Monaco}{}{}
+\begin{bullets}
+  \item ローカルで動作する Overleaf クローン。Monaco エディタとライブ PDF プレビューの分割ビュー、ファイルツリー、ドラッグ＆ドロップアップロード、保存時自動コンパイルに対応。
+\end{bullets}
+
+\section{スキル}
+
+\begin{tabular}{@{}p{0.28\linewidth}@{}p{0.72\linewidth}@{}}
+  \textbf{プログラミング言語} & Python、OCaml、C、Java、TypeScript／JavaScript、Dart、SQL、Verilog \\
+  \textbf{フレームワーク} & Next.js、React、FastAPI、Flutter、Express \\
+  \textbf{データ・インフラ} & PostgreSQL、Firebase、GCP（Cloud Run、Cloud SQL）、Docker、Git \\
+  \textbf{自動化} & Playwright、シェルスクリプト、Web スクレイピング \\
+  \textbf{その他} & \LaTeX、Monaco、Linux、VS Code \\
+\end{tabular}
+
+\section{語学・資格}
+
+\begin{tabular}{@{}p{0.28\linewidth}@{}p{0.72\linewidth}@{}}
+  \textbf{語学} & 英語（流暢）・ビルマ語（母語）・日本語（JLPT N1）・スペイン語（日常会話）・中国語（基礎） \\
+  \textbf{資格} & 日本語能力試験 N1（2023年8月取得） \\
+\end{tabular}
+
+\end{document}
