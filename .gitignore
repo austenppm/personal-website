@@ -48,3 +48,6 @@ resume/*.toc
 resume/*.fls
 resume/*.fdb_latexmk
 resume/*.synctex.gz
+
+# Static export output
+/out/
