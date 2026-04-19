@@ -48,3 +48,12 @@ resume/*.toc
 resume/*.fls
 resume/*.fdb_latexmk
 resume/*.synctex.gz
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
