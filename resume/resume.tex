@@ -1,0 +1,226 @@
+% !TEX program = pdflatex
+% Pyii Phyo Maung — resume
+% Single-file, no external .cls. Compile with: pdflatex resume.tex
+
+\documentclass[11pt,a4paper]{article}
+
+% ---------- packages ----------
+\usepackage[margin=0.7in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{parskip}
+
+% ---------- palette (warm, matches website) ----------
+\definecolor{accent}{HTML}{D96C2B}   % warm orange
+\definecolor{fg}{HTML}{1C1410}       % near-black
+\definecolor{muted}{HTML}{6B6660}    % stone-500-ish
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent
+}
+
+% ---------- section styling ----------
+\titleformat{\section}
+  {\color{accent}\normalfont\large\bfseries\uppercase}
+  {}
+  {0pt}
+  {}[\vspace{-6pt}\color{accent!40}\hrulefill\vspace{-2pt}]
+
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+% ---------- custom commands ----------
+% \role{role}{org}{dates}{location}
+\newcommand{\role}[4]{%
+  \noindent
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l r}
+    \textbf{#1} \textcolor{muted}{\textbar{}} #2 & \textcolor{muted}{#3}\\[-1pt]
+    \textcolor{muted}{\small #4} &
+  \end{tabular*}\par\vspace{-2pt}
+}
+
+% \project{title}{stack}{link text}{link url}
+\newcommand{\project}[4]{%
+  \noindent
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l r}
+    \textbf{#1} \textcolor{muted}{\textbar{}} \textit{\small #2} & \href{#4}{\small\color{accent} #3}\\
+  \end{tabular*}\par\vspace{-2pt}
+}
+
+\newenvironment{bullets}
+  {\begin{itemize}[leftmargin=1.1em, itemsep=1pt, parsep=0pt, topsep=2pt]}
+  {\end{itemize}}
+
+\setlength{\parindent}{0pt}
+\pagenumbering{gobble}
+
+% ==================================================================
+\begin{document}
+\color{fg}
+
+% ---------- header ----------
+\begin{center}
+  {\Huge\bfseries Pyii Phyo Maung}\\[4pt]
+  {\color{muted}\large Software Engineer \textperiodcentered{} CS @ Kyoto University}\\[8pt]
+  \small
+  \faEnvelope[regular]\ \href{mailto:austenppm12345.career@gmail.com}{austenppm12345.career@gmail.com}
+  \quad\textcolor{muted}{\textbar}\quad
+  \faGithub\ \href{https://github.com/austenppm}{github.com/austenppm}
+  \quad\textcolor{muted}{\textbar}\quad
+  \faLinkedin\ \href{https://www.linkedin.com/in/pyii-phyo-maung-70435017a/}{linkedin.com/in/pyii-phyo-maung}
+  \quad\textcolor{muted}{\textbar}\quad
+  \faGlobe\ \href{https://pyiiphyomaung.com}{pyiiphyomaung.com}
+  \\[2pt]
+  \faMapMarker*\ \textcolor{muted}{Kyoto, Japan}
+\end{center}
+
+\vspace{4pt}
+
+% ---------- education ----------
+\section{Education}
+
+\role
+  {B.Eng., Computer Science (in progress)}
+  {Kyoto University}
+  {Apr 2020 -- Present}
+  {Faculty of Engineering, Informatics Dept.}
+\begin{bullets}
+  \item Relevant coursework: compilers, computer architecture, operating systems, algorithms, signal \& image processing, digital logic design.
+  \item Coursework projects in OCaml, Verilog, C, and Python (details under \textit{Projects}).
+\end{bullets}
+
+\role
+  {High School Diploma}
+  {Yangon International School}
+  {2013 -- 2019}
+  {Yangon, Myanmar}
+
+% ---------- research ----------
+\section{Research}
+
+\role
+  {\textit{Scaling MARL-CPC: Achieving Decentralized Coordination in Multi-Agent Environments}}
+  {B.Eng. Thesis}
+  {Feb 2026}
+  {Symbol Emergence Systems Lab (Prof. Tadahiro Taniguchi), Kyoto University}
+\begin{bullets}
+  \item Extended MARL-CPC --- a variational Collective Predictive Coding framework for emergent communication in multi-agent RL --- from single-round two-agent settings to multi-round message passing scaling to 3--5 agents.
+  \item Proposed and compared two CPC loss strategies (\textit{Final Round} vs.\ \textit{Every Round}) on a non-cooperative Bandit coordination task; showed that dense per-round learning signal (\textit{Every Round}) is essential as the number of agents grows.
+  \item Implemented the full training + evaluation pipeline in PyTorch; ran 2--5 agent experiments across multiple seeds, producing learning-curve and final-reward comparisons against prior work.
+\end{bullets}
+
+% ---------- experience ----------
+\section{Experience}
+
+\role
+  {Software Engineer}
+  {Senren, Inc.}
+  {Sep 2025 -- Present}
+  {Japan · part-time, hybrid, concurrent with studies}
+\begin{bullets}
+  \item Full-stack feature development and browser automation on GCP.
+  \item Day-to-day stack: Next.js / React on the front-end, FastAPI (Python) on the back-end, Playwright for automation, PostgreSQL on Cloud SQL, Cloud Run for orchestration.
+  \item Ship code end-to-end: design, implement, deploy, observe, iterate.
+\end{bullets}
+
+\role
+  {English Tutor (Private)}
+  {Private one-on-one tutoring}
+  {2023 (approx.\ 6 months)}
+  {Kyoto --- high school students}
+\begin{bullets}
+  \item One-on-one English tutoring for Japanese high-school students: reading comprehension, writing, and conversation practice, tailored per student.
+\end{bullets}
+
+\role
+  {Local Tour Host}
+  {City Unscripted}
+  {Aug 2023 -- Present}
+  {Kyoto, Japan}
+\begin{bullets}
+  \item Lead bespoke English-language walking experiences across Kyoto for international visitors.
+  \item Plan routes on the fly around each guest's interests, pace, and weather.
+\end{bullets}
+
+\role
+  {Software Engineering Intern}
+  {Konica Minolta --- tomoLinks}
+  {Aug 2022}
+  {Tokyo, Japan}
+\begin{bullets}
+  \item Short-term internship on the tomoLinks EdTech platform for Japanese schools.
+  \item Contributed to feature work and bug investigations alongside full-time engineers.
+\end{bullets}
+
+\role
+  {Hotel Staff}
+  {Mitsui Garden Hotel}
+  {Sep 2022 -- Jan 2023}
+  {Kyoto, Japan (part-time)}
+
+\role
+  {Waiter}
+  {Sowaka --- kaiseki restaurant at a ryokan in Gion}
+  {Oct 2022}
+  {Kyoto, Japan}
+\begin{bullets}
+  \item Waitstaff on the kaiseki floor at the Sowaka ryokan in Gion; operational keigo at service pace.
+\end{bullets}
+
+% ---------- projects ----------
+\section{Selected Projects}
+
+\project{Rutilea Music}{Python, LLM, Multimodal}{github.com/austenppm/rutileamusic}{https://github.com/austenppm/rutileamusic}
+\begin{bullets}
+  \item App that uses an LLM to pick music matching the mood of a given photograph; experiments with multimodal prompting and vibe-based retrieval.
+\end{bullets}
+
+\project{OCaml Interpreter}{OCaml, PLT, Compilers}{github.com/austenppm/interpreter}{https://github.com/austenppm/interpreter}
+\begin{bullets}
+  \item From-scratch interpreter for a subset of ML: lexing, parsing, type inference, evaluation.
+\end{bullets}
+
+\project{SIMPLE CPU}{Verilog, Hardware}{github.com/austenppm/simpleausten}{https://github.com/austenppm/simpleausten}
+\begin{bullets}
+  \item Simple pipelined processor implemented in Verilog for Kyoto University's computer architecture course; runs a small custom ISA end-to-end.
+\end{bullets}
+
+\project{Life Quest}{Flutter, Dart, Firebase}{}{}
+\begin{bullets}
+  \item Life-gamification app that turns daily habits into an RPG --- ten D\&D-style stats, XP and streak tracking, AI-assisted stat detection, multi-step quest system.
+\end{bullets}
+
+\project{Offline LaTeX Compiler}{Node.js, React, Monaco}{}{}
+\begin{bullets}
+  \item Local, offline clone of Overleaf: split-pane Monaco editor with live PDF preview, file tree, drag-and-drop upload, auto-compile on save. Node / Express back-end, React front-end.
+\end{bullets}
+
+% ---------- skills ----------
+\section{Skills}
+
+\begin{tabular}{@{}p{0.22\linewidth}@{}p{0.78\linewidth}@{}}
+  \textbf{Languages} & Python, OCaml, C, Java, TypeScript / JavaScript, Dart, SQL, Verilog \\
+  \textbf{Frameworks} & Next.js, React, FastAPI, Flutter, Express \\
+  \textbf{Data \& Infra} & PostgreSQL, Firebase, GCP (Cloud Run, Cloud SQL), Docker, Git \\
+  \textbf{Automation} & Playwright, shell scripting, web scraping \\
+  \textbf{Tooling} & \LaTeX{}, Monaco, Linux, VS Code \\
+\end{tabular}
+
+% ---------- languages + certs ----------
+\section{Languages \& Certifications}
+
+\begin{tabular}{@{}p{0.22\linewidth}@{}p{0.78\linewidth}@{}}
+  \textbf{Languages} & English (Fluent) \textperiodcentered{} Burmese (Native) \textperiodcentered{} Japanese (JLPT N1) \textperiodcentered{} Spanish (Conversational) \textperiodcentered{} Chinese (Basic) \\
+  \textbf{Certifications} & Japanese-Language Proficiency Test N1 --- Aug 2023 \\
+\end{tabular}
+
+\end{document}

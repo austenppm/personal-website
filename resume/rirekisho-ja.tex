@@ -1,0 +1,160 @@
+% !TEX program = xelatex
+% 履歴書 — JIS-style rirekisho for Pyii Phyo Maung (Japanese labels)
+% Compile with: xelatex rirekisho-ja.tex
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[top=12mm,bottom=12mm,left=12mm,right=12mm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont{Hiragino Mincho ProN}[BoldFont={Hiragino Mincho ProN W6}]
+\setCJKsansfont{Hiragino Sans}
+
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4pt}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+% Cell helpers
+\newcommand{\fieldlabel}[1]{\small\textsf{#1}}
+\newcommand{\furigana}[1]{\tiny\textsf{ふりがな}\hspace{1em}{\footnotesize #1}}
+
+\begin{document}
+
+% ---------- header ----------
+\noindent
+\begin{minipage}[t]{0.65\linewidth}
+  {\Huge\bfseries 履\hspace{1em}歴\hspace{1em}書}
+\end{minipage}%
+\begin{minipage}[t]{0.35\linewidth}
+  \raggedleft
+  \vspace{1.2em}
+  2026年\hspace{0.3em}4月\hspace{0.3em}19日現在
+\end{minipage}
+
+\vspace{4pt}
+
+% ---------- name / dob / photo block ----------
+\noindent
+\begin{tabular}{|m{3.4cm}|m{7cm}|m{1.8cm}|m{3.5cm}|}
+  \hline
+  \multicolumn{2}{|l|}{\furigana{ピー フォー マウン}} & & \\[-0.4em]
+  \fieldlabel{氏\hspace{1em}名} & {\Large Pyii Phyo Maung} & \fieldlabel{男} &
+    \multirow{4}{*}{\makecell{\\[-0.2em]\fbox{\begin{minipage}[c][3.0cm][c]{3.0cm}\centering\small 写真貼付欄\\[2pt](30mm×40mm)\end{minipage}}}}\\
+  \cline{1-3}
+  \multicolumn{3}{|l|}{\fieldlabel{生年月日}\hspace{1em}2001\hspace{0.4em}年\hspace{0.4em}5\hspace{0.4em}月\hspace{0.4em}17\hspace{0.4em}日生（満\hspace{0.2em}24\hspace{0.2em}歳）} & \\
+  \hline
+\end{tabular}
+
+\vspace{2pt}
+
+% ---------- address block ----------
+\noindent
+\begin{tabular}{|m{11.3cm}|m{5.9cm}|}
+  \hline
+  \furigana{きょうとふ きょうとし さきょうく よしだ にほんまつちょう えるぷらす101ごう} &
+    \fieldlabel{電話}\hspace{1em}070-8488-8998 \\[-0.3em]
+  \fieldlabel{現住所}\hspace{0.5em}（〒606－8316）
+    京都府京都市左京区吉田二本松町エルプラス101号 &
+    \fieldlabel{E-mail}\hspace{0.5em}\small austenppm12345.career@gmail.com \\
+  \hline
+  \furigana{同上} &
+    \fieldlabel{電話}\hspace{1em}同上 \\[-0.3em]
+  \fieldlabel{連絡先}\hspace{0.5em}（現住所以外に連絡を希望する場合のみ記入） &
+    \fieldlabel{E-mail}\hspace{0.5em}同上 \\
+  \hline
+\end{tabular}
+
+\vspace{4pt}
+
+% ---------- education / work history ----------
+\noindent
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{0.8cm}|X|}
+  \hline
+  \fieldlabel{年} & \fieldlabel{月} & \hfil\fieldlabel{学\hspace{1em}歴・職\hspace{1em}歴}\hfil \\
+  \hline
+  & & \hfil\textbf{学\hspace{1em}歴}\hfil \\
+  2004 & 5  & ILBC（International Language and Business Centre）幼稚園・小学校 \\
+  2013 & 1  & Yangon International School（中学校・高等学校） \\
+  2019 & 5  & Yangon International School 卒業（5月31日） \\
+  2019 & 10 & 京都大学 日本語・日本文化研修コース（予備教育） \\
+  2020 & 4  & 京都大学 工学部 情報学科 計算機科学コース 入学 \\
+  2026 & 9  & 同上 卒業見込み \\
+  & & \\
+  & & \hfil\textbf{職\hspace{1em}歴}\hfil \\
+  2022 & 8  & コニカミノルタ株式会社 tomoLinks（サマーインターンシップ） \\
+  2022 & 9  & 株式会社三井不動産ホテルマネジメント 三井ガーデンホテル京都四条（〜2023年1月末） \\
+  2022 & 10 & そわか（祇園の旅館内の懐石料理店にてホール・接客） \\
+  2023 & 2  & 英語個人講師（高校生対象・マンツーマン、2023年夏頃まで約半年間） \\
+  2023 & 8  & City Unscripted（英語ツアーガイド、現職） \\
+  2025 & 9  & 株式会社 Senren 入社（ソフトウェアエンジニア／アルバイト・ハイブリッド、現職） \\
+  & & \\
+  & & \hfil 以\hspace{1em}上\hfil \\
+  \hline
+\end{tabularx}
+
+\newpage
+
+% ---------- licenses / certifications ----------
+\noindent
+\begin{tabularx}{\linewidth}{|>{\centering\arraybackslash}m{1.2cm}|>{\centering\arraybackslash}m{0.8cm}|X|}
+  \hline
+  \fieldlabel{年} & \fieldlabel{月} & \hfil\fieldlabel{免\hspace{1em}許・資\hspace{1em}格}\hfil \\
+  \hline
+  2023 & 8  & 日本語能力試験（JLPT）N1 合格 \\
+       &    & \\
+       &    & \\
+       &    & \\
+       &    & \\
+  \hline
+\end{tabularx}
+
+\vspace{4pt}
+
+% ---------- self-PR + commute/family side ----------
+\noindent
+\begin{tabular}{|m{11.5cm}|m{5.7cm}|}
+  \hline
+  \fieldlabel{志望の動機、自己PR、趣味・特技など} & \fieldlabel{通勤時間}\\
+  \begin{minipage}[t][6.5cm][t]{11.5cm}
+    \setlength{\parskip}{4pt}
+    ミャンマー出身、京都大学工学部情報学科計算機科学コースに在学中の留学生です。英語とビルマ語を母語レベルで扱い、日本語は JLPT N1 を取得しております。学業と並行して株式会社 Senren でソフトウェアエンジニアとして業務に携わり、Next.js／FastAPI／GCP を用いたフルスタック開発の実務経験を積んできました。\par
+    大学では、谷口忠大教授のもとでマルチエージェント強化学習における創発コミュニケーションの研究に取り組み、学士論文「Scaling MARL-CPC」を執筆しました。学術的な探究と実務的なものづくりの双方に関心があります。\par
+    趣味は言語学習、散歩、京都の街歩きです。どうぞよろしくお願いいたします。
+  \end{minipage}
+  &
+  \begin{minipage}[t][6.5cm][t]{5.7cm}
+    \centering 約\hspace{0.6em}0\hspace{0.6em}時間\hspace{0.6em}30\hspace{0.6em}分\par
+    \vspace{6pt}\hrule\vspace{6pt}
+    \fieldlabel{扶養家族（配偶者を除く）}\par
+    \vspace{4pt}\centering 0\hspace{0.4em}人\par
+    \vspace{6pt}\hrule\vspace{6pt}
+    \fieldlabel{配偶者}\hfill \fieldlabel{配偶者の扶養義務}\par
+    \vspace{4pt}\centering 無\hspace{3.5em}無
+  \end{minipage}
+  \\
+  \hline
+\end{tabular}
+
+\vspace{4pt}
+
+% ---------- personal wishes ----------
+\noindent
+\begin{tabular}{|m{\dimexpr\linewidth-2\tabcolsep-2\arrayrulewidth\relax}|}
+  \hline
+  \fieldlabel{本人希望記入欄（特に待遇・職種・勤務時間・その他についての希望などがあれば記入）}\\
+  \begin{minipage}[t][5cm][t]{\linewidth}
+    \setlength{\parskip}{4pt}
+    ソフトウェアエンジニアリング職を希望いたします。Python／OCaml／C／Java／TypeScript など、複数言語での開発経験があります。実務では Next.js、FastAPI、PostgreSQL、GCP（Cloud Run／Cloud SQL）、Playwright などを用いています。勤務条件等につきましては、貴社の規定に従います。
+  \end{minipage}
+  \\
+  \hline
+\end{tabular}
+
+\end{document}
