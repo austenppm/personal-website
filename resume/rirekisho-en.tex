@@ -13,6 +13,7 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{makecell}
+\usepackage{multirow}
 \usepackage{xcolor}
 \usepackage{graphicx}
 
@@ -34,22 +35,26 @@
 \begin{minipage}[t]{0.35\linewidth}
   \raggedleft
   \vspace{1.2em}
-  As of April 19, 2026
+  As of October 15, 2026
 \end{minipage}
 
 \vspace{4pt}
 
 % ---------- name / dob / photo block ----------
 \noindent
-\begin{tabular}{|m{3.4cm}|m{7cm}|m{1.8cm}|m{3.5cm}|}
+\begin{minipage}[b]{0.8\linewidth}
+\begin{tabular}{|m{3cm}|m{8.5cm}|m{1.6cm}|}
   \hline
-  \multicolumn{2}{|l|}{\fieldlabel{Phonetic reading}\hspace{1em}\footnotesize Pii Foo Maun} & & \\[-0.4em]
-  \fieldlabel{Full name} & {\Large Pyii Phyo Maung} & \fieldlabel{Male} &
-    \multirow{4}{*}{\makecell{\\[-0.2em]\fbox{\begin{minipage}[c][3.0cm][c]{3.0cm}\centering\small Photo\\[2pt](30mm × 40mm)\end{minipage}}}}\\
-  \cline{1-3}
-  \multicolumn{3}{|l|}{\fieldlabel{Date of birth}\hspace{1em}May 17, 2001\hspace{1em}(Age 24)} & \\
+  \multicolumn{3}{|l|}{\fieldlabel{Phonetic reading}\hspace{1em}\footnotesize Pii Foo Maun} \\[-0.4em]
+  \fieldlabel{Full name} & {\Large Pyii Phyo Maung} & \fieldlabel{Male} \\
+  \hline
+  \multicolumn{3}{|l|}{\fieldlabel{Date of birth}\hspace{1em}May 17, 2001\hspace{1em}(Age 25)} \\
   \hline
 \end{tabular}
+\end{minipage}\hfill
+\begin{minipage}[b]{3.2cm}
+  \centering\fbox{\begin{minipage}[c][4.0cm][c]{3.0cm}\centering\small Photo\\[2pt](30mm × 40mm)\end{minipage}}
+\end{minipage}
 
 \vspace{2pt}
 
@@ -84,15 +89,16 @@
   2019 & 5  & Yangon International School — graduated (May 31) \\
   2019 & 10 & Kyoto University — Japanese Language \& Culture Preparatory Course \\
   2020 & 4  & Kyoto University, Faculty of Engineering — Dept. of Informatics, Computer Science Course, enrolled \\
-  2026 & 9  & Same — expected graduation \\
+  2027 & 3  & Same — expected graduation \\
   & & \\
   & & \hfil\textbf{Work History}\hfil \\
   2022 & 8  & Konica Minolta, Inc. — tomoLinks (summer software engineering internship) \\
   2022 & 9  & Mitsui Garden Hotel Kyoto Shijo — hotel staff (through Jan 2023) \\
-  2022 & 10 & Sowaka, Kyoto — waiter at the kaiseki restaurant inside the Sowaka ryokan, Gion \\
+  2022 & 10 & Sowaka, Kyoto — waiter at the kaiseki restaurant inside the Sowaka ryokan, Gion (current) \\
   2023 & 2  & Private English tutor — one-on-one for high-school students (approx.\ 6 months through summer 2023) \\
   2023 & 8  & City Unscripted — local tour host in Kyoto (current) \\
-  2025 & 9  & Senren, Inc. — Software Engineer (part-time, hybrid, concurrent with studies, current) \\
+  2025 & 9  & Senren, Inc. — Software Engineer (part-time, hybrid, concurrent with studies; currently between projects) \\
+  2026 & 7  & Zen Inc. — Software Engineer (current) \\
   & & \\
   & & \hfil End\hfil \\
   \hline
@@ -107,7 +113,7 @@
   \fieldlabel{Year} & \fieldlabel{Mo.} & \hfil\fieldlabel{Licenses \& Certifications}\hfil \\
   \hline
   2023 & 8 & Japanese-Language Proficiency Test (JLPT) — N1 \\
-       &   & \\
+  2025 & 5 & TOEFL iBT — 116 / 120 \\
        &   & \\
        &   & \\
        &   & \\
@@ -123,8 +129,8 @@
   \fieldlabel{Motivation, Personal Statement, Hobbies \& Special Skills} & \fieldlabel{Commute time}\\
   \begin{minipage}[t][6.5cm][t]{11.5cm}
     \setlength{\parskip}{4pt}
-    International student from Myanmar, currently in the Computer Science Course of the Informatics Department at Kyoto University's Faculty of Engineering. Fluent in English and Burmese, JLPT N1 in Japanese, with foundations in Spanish and Chinese.\par
-    Working concurrently as a software engineer at Senren, Inc., where I build full-stack features on GCP using Next.js, FastAPI, Playwright, and PostgreSQL.\par
+    International student from Myanmar, currently in the Computer Science Course of the Informatics Department at Kyoto University's Faculty of Engineering. Fluent in English (TOEFL iBT 116) and Burmese, JLPT N1 in Japanese, with foundations in Spanish and Chinese.\par
+    Working concurrently as a software engineer at Zen Inc.\ and Senren, Inc., where I build full-stack features on GCP using Next.js, FastAPI, Playwright, and PostgreSQL.\par
     For my undergraduate thesis at the Symbol Emergence Systems Lab (Prof.\ Tadahiro Taniguchi), I extended MARL-CPC — a variational framework for emergent communication in multi-agent reinforcement learning — to multi-round message passing with 3--5 agents.\par
     Hobbies: language learning, walking, exploring Kyoto.
   \end{minipage}
