@@ -1,0 +1,8 @@
+name = "lotto-redirect"
+main = "index.js"
+compatibility_date = "2025-09-01"
+workers_dev = false
+
+routes = [
+  { pattern = "lotto.pyiiphyomaung.com", custom_domain = true }
+]
