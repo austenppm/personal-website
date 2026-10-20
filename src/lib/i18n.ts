@@ -95,7 +95,7 @@ export const content: Record<Locale, Content> = {
         before: "CS student at ",
         uni,
         after:
-          " from Myanmar. I just finished my undergraduate thesis at the Symbol Emergence Systems Lab on multi-agent reinforcement learning and emergent communication, and concurrently I’m a software engineer at Senren, Inc., shipping full-stack features on GCP with Next.js, FastAPI, and Playwright. On the side I’ve built an offline Overleaf clone, a Flutter life-gamification app, an LLM that picks music for photos, a handwritten OCaml interpreter, a pipelined CPU in Verilog, and a few smaller tools. Outside of code I’ve worked at a Kyoto hotel and a kaiseki restaurant, tutored English one-on-one, and I still lead bespoke English walking tours around the city with City Unscripted. I like compilers, programming languages, and human languages — I speak five of the latter.",
+          " from Myanmar. I wrote my undergraduate thesis at the Symbol Emergence Systems Lab on multi-agent reinforcement learning and emergent communication, and alongside my studies I’m a software engineer at Zen Inc. and Senren, Inc., shipping full-stack features on GCP with Next.js, FastAPI, and Playwright. On the side I’ve built an offline Overleaf clone, a Flutter life-gamification app, an LLM that picks music for photos, a handwritten OCaml interpreter, a pipelined CPU in Verilog, and a few smaller tools. Outside of code I’ve worked at a Kyoto hotel, tutored English one-on-one, and I still serve at a kaiseki restaurant and lead bespoke English walking tours around the city with City Unscripted. I like compilers, programming languages, and human languages — I speak five of the latter.",
       }),
       cta: "See my work",
       resumeJa: "Résumé · Japanese style (履歴書)",
@@ -108,14 +108,14 @@ export const content: Record<Locale, Content> = {
       title: "A little about me.",
       paragraphs: [
         "I was born in Yangon, went to Yangon International School, and moved to Japan in 2019 to study at Kyoto University, where I’m in the Computer Science course of the Faculty of Engineering’s Informatics department.",
-        "Alongside my studies I work as a software engineer at Senren, shipping full-stack features and automation workflows on top of GCP. On the research side, I just finished my B.Eng. thesis on scaling emergent communication in multi-agent RL at the Symbol Emergence Systems Lab.",
+        "Alongside my studies I work as a software engineer at Zen Inc. and Senren, shipping full-stack features and automation workflows on top of GCP. On the research side, I wrote my B.Eng. thesis on scaling emergent communication in multi-agent RL at the Symbol Emergence Systems Lab.",
         "I also build a lot of things for fun. An offline Overleaf clone so I can write LaTeX without the internet. A Flutter life-gamification app that turns daily habits into an RPG. An LLM-driven app that picks music for the mood of a photograph. A handwritten OCaml interpreter. A small pipelined CPU in Verilog. A CLI weather tool. Most of them live on GitHub (see Projects below).",
         "Outside of code I’ve worked as a hotel staffer, a kaiseki-restaurant waiter, and a City Unscripted tour guide in Kyoto — a pretty nice way to see your adopted city through fresh eyes every week.",
       ],
       languagesLabel: "Languages",
       stackLabel: "Stack",
       languages: [
-        { label: "English", level: "Fluent" },
+        { label: "English", level: "Fluent · TOEFL iBT 116" },
         { label: "Burmese", level: "Native" },
         { label: "Japanese", level: "JLPT N1" },
         { label: "Spanish", level: "Conversational" },
@@ -148,15 +148,21 @@ export const content: Record<Locale, Content> = {
       title: "What I’ve been up to.",
       items: [
         {
+          period: "Jul 2026 — Present",
+          role: "Software Engineer",
+          place: "Zen Inc.",
+          blurb: "Software engineering work alongside my studies.",
+        },
+        {
           period: "Sep 2025 — Present",
           role: "Software Engineer",
           place: "Senren, Inc.",
           blurb:
-            "Part-time, hybrid. Full-stack feature work and automation infrastructure on GCP. Day-to-day spans Next.js / React on the front-end, FastAPI and Python on the back-end, Playwright for automation, PostgreSQL on Cloud SQL, and Cloud Run for orchestration.",
+            "Part-time, hybrid; currently between projects. Full-stack feature work and automation infrastructure on GCP. Day-to-day spans Next.js / React on the front-end, FastAPI and Python on the back-end, Playwright for automation, PostgreSQL on Cloud SQL, and Cloud Run for orchestration.",
           tags: ["Next.js", "FastAPI", "Playwright", "GCP", "PostgreSQL"],
         },
         {
-          period: "Apr 2020 — Present",
+          period: "Apr 2020 — Mar 2027 (expected)",
           role: "B.Eng., Computer Science",
           place: "Kyoto University — Faculty of Engineering, Informatics",
           blurb:
@@ -188,11 +194,11 @@ export const content: Record<Locale, Content> = {
           tags: ["Internship", "EdTech"],
         },
         {
-          period: "Oct 2022",
+          period: "Oct 2022 — Present",
           role: "Waiter",
           place: "Sowaka — kaiseki restaurant, Kyoto",
           blurb:
-            "Waitstaff at the kaiseki restaurant inside the Sowaka ryokan in Gion. Sharpened my keigo and learned the rhythm of Japanese hospitality from the inside.",
+            "Waitstaff at the kaiseki restaurant inside the Sowaka ryokan in Gion, for four years and counting. Sharpened my keigo and learned the rhythm of Japanese hospitality from the inside.",
         },
         {
           period: "Sep 2022 — Jan 2023",
@@ -310,7 +316,7 @@ export const content: Record<Locale, Content> = {
         before: "ミャンマー出身、",
         uni,
         after:
-          "工学部情報学科 計算機科学コース所属。記号創発システム研究室でマルチエージェント強化学習と創発コミュニケーションを研究し、学士論文を執筆。並行して株式会社 Senren でソフトウェアエンジニアとして、GCP 上で Next.js／FastAPI／Playwright を用いたフルスタック開発に携わっています。個人では、オフラインで動く Overleaf クローン、Flutter 製のライフ・ゲーミフィケーションアプリ、写真の雰囲気に合う曲を LLM が選ぶアプリ、OCaml 製のインタプリタ、Verilog のパイプライン CPU などを制作してきました。コードの外では、京都のホテルや京町家の割烹料理店で働いた経験、英語の個人指導の経験もあり、現在も City Unscripted で英語のオーダーメイド京都ツアーを案内しています。コンパイラ、プログラミング言語、そして人間の言葉（5か国語話します）が好きです。",
+          "工学部情報学科 計算機科学コース所属。記号創発システム研究室でマルチエージェント強化学習と創発コミュニケーションを研究し、学士論文を執筆。学業と並行して Zen Inc. と株式会社 Senren でソフトウェアエンジニアとして、GCP 上で Next.js／FastAPI／Playwright を用いたフルスタック開発に携わっています。個人では、オフラインで動く Overleaf クローン、Flutter 製のライフ・ゲーミフィケーションアプリ、写真の雰囲気に合う曲を LLM が選ぶアプリ、OCaml 製のインタプリタ、Verilog のパイプライン CPU などを制作してきました。コードの外では、京都のホテルでの勤務や英語の個人指導の経験があり、現在も懐石料理店「そわか」での接客と、City Unscripted で英語のオーダーメイド京都ツアーを案内しています。コンパイラ、プログラミング言語、そして人間の言葉（5か国語話します）が好きです。",
       }),
       cta: "プロジェクトを見る",
       resumeJa: "履歴書（日本式・JIS様式）",
@@ -323,14 +329,14 @@ export const content: Record<Locale, Content> = {
       title: "自分について少し。",
       paragraphs: [
         "ヤンゴン生まれ。Yangon International School を卒業後、2019年に来日し、現在は京都大学工学部情報学科計算機科学コースに在籍しています。",
-        "学業のかたわら、株式会社 Senren でソフトウェアエンジニアとして、GCP 上でフルスタック開発と自動化ワークフローの構築・運用を担当。研究面では、記号創発システム研究室でマルチエージェント強化学習におけるコミュニケーションの創発をテーマに学士論文を執筆しました。",
+        "学業のかたわら、Zen Inc. と株式会社 Senren でソフトウェアエンジニアとして、GCP 上でフルスタック開発と自動化ワークフローの構築・運用を担当。研究面では、記号創発システム研究室でマルチエージェント強化学習におけるコミュニケーションの創発をテーマに学士論文を執筆しました。",
         "趣味のものづくりもたくさんあります。オフラインで動く Overleaf クローン、日々の習慣を RPG 化する Flutter 製アプリ、写真の雰囲気に合う曲を LLM が選ぶアプリ、OCaml 製のインタプリタ、Verilog の小さなパイプライン CPU、CLI の天気ツールなど。多くは GitHub で公開しています（下の〈プロジェクト〉参照）。",
         "コードの外では、ホテルスタッフ、懐石料理店のホールスタッフ、City Unscripted の英語ツアーガイドとしても働いてきました。毎週新しい視点で京都を歩けるのは、なかなかに贅沢な時間です。",
       ],
       languagesLabel: "言語",
       stackLabel: "技術スタック",
       languages: [
-        { label: "English（英語）", level: "流暢" },
+        { label: "English（英語）", level: "流暢・TOEFL iBT 116" },
         { label: "မြန်မာ（ビルマ語）", level: "母語" },
         { label: "日本語", level: "JLPT N1" },
         { label: "Español（スペイン語）", level: "日常会話" },
@@ -363,15 +369,21 @@ export const content: Record<Locale, Content> = {
       title: "これまでやってきたこと。",
       items: [
         {
+          period: "2026年7月 〜 現在",
+          role: "ソフトウェアエンジニア",
+          place: "Zen Inc.",
+          blurb: "学業と並行してソフトウェアエンジニアとして勤務。",
+        },
+        {
           period: "2025年9月 〜 現在",
           role: "ソフトウェアエンジニア",
           place: "株式会社 Senren",
           blurb:
-            "アルバイト・ハイブリッド勤務。GCP 上でのフルスタック開発と自動化基盤の整備を担当。フロントエンドは Next.js / React、バックエンドは FastAPI（Python）、自動化は Playwright、DB は Cloud SQL（PostgreSQL）、実行基盤は Cloud Run を中心に、機能開発と運用改善に取り組んでいます。",
+            "アルバイト・ハイブリッド勤務（現在案件待機中）。GCP 上でのフルスタック開発と自動化基盤の整備を担当。フロントエンドは Next.js / React、バックエンドは FastAPI（Python）、自動化は Playwright、DB は Cloud SQL（PostgreSQL）、実行基盤は Cloud Run を中心に、機能開発と運用改善に取り組んでいます。",
           tags: ["Next.js", "FastAPI", "Playwright", "GCP", "PostgreSQL"],
         },
         {
-          period: "2020年4月 〜 現在",
+          period: "2020年4月 〜 2027年3月（卒業見込み）",
           role: "工学士（計算機科学）",
           place: "京都大学 工学部 情報学科",
           blurb:
@@ -403,11 +415,11 @@ export const content: Record<Locale, Content> = {
           tags: ["インターンシップ", "EdTech"],
         },
         {
-          period: "2022年10月",
+          period: "2022年10月 〜 現在",
           role: "ホールスタッフ（接客）",
           place: "そわか — 懐石料理店（京都・祇園）",
           blurb:
-            "祇園の旅館「そわか」内の懐石料理店にてホール・接客を担当。敬語と日本のホスピタリティのリズムを現場で学びました。",
+            "祇園の旅館「そわか」内の懐石料理店にて4年以上ホール・接客を担当。敬語と日本のホスピタリティのリズムを現場で学びました。",
         },
         {
           period: "2022年9月 〜 2023年1月",
