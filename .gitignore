@@ -51,3 +51,4 @@ resume/*.synctex.gz
 
 # Static export output
 /out/
+.wrangler/
