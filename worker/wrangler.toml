@@ -1,0 +1,13 @@
+name = "research-api"
+main = "src/index.ts"
+compatibility_date = "2024-09-25"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+routes = [
+  { pattern = "research.pyiiphyomaung.com", custom_domain = true }
+]
+
+[vars]
+ALLOWED_ORIGIN = "https://pyiiphyomaung.com"
+# PASSWORD and GEMINI_API_KEY are secrets: wrangler secret put <NAME>
