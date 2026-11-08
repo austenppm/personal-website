@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { GAMES, averagePrizes, masks, popcount, spread, tier, tierOdds, type Game, type GameKey, type Ticket } from "./lotto";
+import { GAMES, averagePrizes, masks, popcount, spread, tier, tierOdds, type Draw, type Game, type GameKey, type Ticket } from "./lotto";
 import { Ball, Card, GamePicker, NumberGrid, Row, yen, type Data } from "./ui";
 
-type Mode = "random" | "fixed";
+type Mode = "random" | "cold" | "fixed";
+
+const COLD_WINDOW = 100; // same window the picker uses for hot/cold
 
 const PERIODS = [1, 5, 10, 25, 50, 100, 1000, Infinity];
 const SPEEDS: [string, number][] = [
@@ -46,9 +48,15 @@ interface Sim {
   last: { drawn: number[]; bonus: number[]; tickets: Ticket[] } | null;
   stopped: string | null;
   target: number; // stop after this many draws
+  recent: number[][]; // main numbers of the last COLD_WINDOW draws, real then simulated
+  counts: number[]; // appearances of each number in `recent`
 }
 
-const newSim = (g: Game, target: number): Sim => ({
+const newSim = (g: Game, target: number, history: Draw[]): Sim => {
+  const recent = history.slice(-COLD_WINDOW).map((d) => [...d.n]);
+  const counts = new Array(g.maxNum + 1).fill(0);
+  for (const n of recent.flat()) counts[n]++;
+  return {
   draws: 0,
   paid: 0,
   won: 0,
@@ -62,7 +70,10 @@ const newSim = (g: Game, target: number): Sim => ({
   last: null,
   stopped: null,
   target,
-});
+  recent,
+  counts,
+  };
+};
 
 const snapshot = (s: Sim): Sim => ({
   ...s,
@@ -71,6 +82,15 @@ const snapshot = (s: Sim): Sim => ({
   series: [...s.series],
   log: [...s.log],
 });
+
+/** Tickets of the least-drawn numbers: the coldest `pick` form ticket 1, the next coldest ticket 2, and so on. Ties are broken at random. */
+function coldTickets(g: Game, counts: number[], n: number): Ticket[] {
+  const order = Array.from({ length: g.maxNum }, (_, i) => i + 1)
+    .map((x) => [x, counts[x] + Math.random() * 0.5])
+    .sort((a, b) => a[1] - b[1])
+    .map(([x]) => x);
+  return Array.from({ length: n }, (_, i) => order.slice(i * g.pick, (i + 1) * g.pick).sort((a, b) => a - b));
+}
 
 /** k distinct numbers from 1..max via partial Fisher-Yates on a reusable pool. */
 function pickInto(pool: number[], k: number): number[] {
@@ -92,6 +112,7 @@ export default function Simulator({ data }: { data: Data }) {
   const [key, setKey] = useState<GameKey>("loto6");
   const [mode, setMode] = useState<Mode>("random");
   const [count, setCount] = useState(10);
+  const [coldCount, setColdCount] = useState(5);
   const [fixed, setFixed] = useState<Ticket[]>([]);
   const [picked, setPicked] = useState<number[]>([]);
   const [years, setYears] = useState(100);
@@ -108,7 +129,9 @@ export default function Simulator({ data }: { data: Data }) {
 
   useEffect(() => () => cancelAnimationFrame(raf.current), []);
 
-  const perDraw = mode === "random" ? count : fixed.length;
+  const maxCold = Math.floor(g.maxNum / g.pick); // every ticket uses different numbers
+  const cold = Math.min(coldCount, maxCold);
+  const perDraw = mode === "random" ? count : mode === "cold" ? cold : fixed.length;
   const avg = averagePrizes(g, data[key]);
   const odds = tierOdds(g);
   const logTier = g.tiers - 2; // log only the rarer prizes (Loto 6/7: 3等/4等 and up)
@@ -148,6 +171,9 @@ export default function Simulator({ data }: { data: Data }) {
           tickets.push(t);
         }
         tm = tickets.map(masks);
+      } else if (mode === "cold") {
+        tickets = coldTickets(g, s.counts, cold);
+        tm = tickets.map(masks);
       } else {
         tickets = fixed;
         tm = fixedMasks;
@@ -172,6 +198,10 @@ export default function Simulator({ data }: { data: Data }) {
         }
         if (stopTier && t <= stopTier && !s.stopped) s.stopped = `Won ${t}等 in draw ${s.draws.toLocaleString("en-US")}`;
       }
+      // This draw becomes part of the history the next cold picks are based on.
+      s.recent.push(drawn);
+      for (const n of drawn) s.counts[n]++;
+      if (s.recent.length > COLD_WINDOW) for (const n of s.recent.shift()!) s.counts[n]--;
       s.last = { drawn: [...drawn].sort((a, b) => a - b), bonus, tickets };
       if (s.draws % s.every === 0) {
         s.series.push(s.won - s.paid);
@@ -207,7 +237,7 @@ export default function Simulator({ data }: { data: Data }) {
 
   const start = () => {
     if (!sim.current) {
-      sim.current = newSim(g, years * g.perYear);
+      sim.current = newSim(g, years * g.perYear, data[key]);
       prizes.current = avg;
     }
     run();
@@ -255,9 +285,9 @@ export default function Simulator({ data }: { data: Data }) {
           <GamePicker value={key} onChange={(k) => { setKey(k); setFixed([]); setPicked([]); reset(); }} />
 
           <div className="mt-4 flex gap-1 rounded-full bg-stone-100 p-1 text-sm">
-            {(["random", "fixed"] as Mode[]).map((m) => (
+            {(["random", "cold", "fixed"] as Mode[]).map((m) => (
               <button key={m} onClick={() => { setMode(m); reset(); }} className={`flex-1 rounded-full px-3 py-1.5 ${mode === m ? "bg-white font-semibold shadow-sm" : "text-stone-500"}`}>
-                {m === "random" ? "New random tickets every draw" : "Same numbers every draw"}
+                {m === "random" ? "Random every draw" : m === "cold" ? "Coldest every draw" : "Same every draw"}
               </button>
             ))}
           </div>
@@ -274,6 +304,25 @@ export default function Simulator({ data }: { data: Data }) {
               />
               tickets per draw ({yen(count * g.price)})
             </label>
+          ) : mode === "cold" ? (
+            <div className="mt-4 space-y-2 text-sm">
+              <label className="flex items-center gap-2">
+                Bet
+                <input
+                  type="number"
+                  min={1}
+                  max={maxCold}
+                  value={cold}
+                  onChange={(e) => { setColdCount(Math.min(maxCold, Math.max(1, Math.floor(Number(e.target.value)) || 1))); reset(); }}
+                  className="w-16 rounded-lg border border-stone-300 bg-white py-0.5 text-center tabular-nums"
+                />
+                tickets per draw ({yen(cold * g.price)})
+              </label>
+              <p className="text-xs text-stone-500">
+                Before every draw, the {cold * g.pick} numbers drawn least in the last {COLD_WINDOW} draws are split into {cold} ticket{cold > 1 ? "s" : ""}, coldest first
+                (up to {maxCold}, so no number is used twice). It starts from the real history, then each simulated draw updates which numbers are cold.
+              </p>
+            </div>
           ) : (
             <div className="mt-4 space-y-3">
               <p className="text-sm text-stone-600">
