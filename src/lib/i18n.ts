@@ -214,7 +214,7 @@ export const content: Record<Locale, Content> = {
       more: { before: "More on ", after: "." },
       items: [
         {
-          title: "Rutilea Music",
+          title: "Photo Mood Music",
           blurb:
             "An app that uses an LLM to pick music matching the mood of a photograph. Experiments with multimodal prompting and vibe-based retrieval.",
         },
@@ -435,7 +435,7 @@ export const content: Record<Locale, Content> = {
       more: { before: "その他は ", after: " にて。" },
       items: [
         {
-          title: "Rutilea Music",
+          title: "Photo Mood Music",
           blurb:
             "写真の雰囲気にあう音楽を LLM が選ぶアプリ。マルチモーダルなプロンプトと、ムードベースの楽曲検索を試作した作品です。",
         },

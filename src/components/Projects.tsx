@@ -7,7 +7,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const meta = [
   {
-    href: "https://github.com/austenppm/rutileamusic",
+    href: "https://github.com/austenppm/photo-mood-music",
     tags: ["Python", "LLM", "Multimodal"],
     accent: "from-rose-400 to-amber-400",
   },
