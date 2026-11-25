@@ -1,4 +1,4 @@
-// Cloudflare Pages Function: GET /api/lotto/<mini|loto6|loto7>
+// Cloudflare Pages Function: GET /api/lotto/<mini|loto6|loto7|numbers3|numbers4>
 // Live draw history for the lotto tool (the CSV source has no CORS).
 // Upstream is cached at Cloudflare's edge for 30 minutes.
 

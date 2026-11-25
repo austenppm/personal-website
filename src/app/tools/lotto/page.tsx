@@ -16,7 +16,8 @@ import {
   type Ticket,
 } from "./lotto";
 import Simulator from "./Simulator";
-import { Ball, Card, GamePicker, KEYS, NumberGrid, Row, Stat, load, pct, store, yen, type Data } from "./ui";
+import NumbersTab from "./NumbersTab";
+import { Ball, Card, GamePicker, KEYS, NumberGrid, Row, Stat, load, loadDraws, pct, store, yen, type Data } from "./ui";
 
 interface SavedSet {
   id: string;
@@ -341,6 +342,11 @@ function AboutTab() {
         <li><b>Typical shape.</b> Tickets look like real draws (normal sum, odd/even mix, no long runs) and never repeat a past result.</li>
       </ul>
       <p>
+        For Numbers 3 and 4 every number is equally likely too, but prizes are split among everyone who picked the
+        winning number. The Numbers picker learns from about 30 years of real payouts which numbers few people play (dates
+        like 1225 pay about half); judged before each draw, its picks paid 11–14% more than average when they came up.
+      </p>
+      <p>
         Japanese lotteries return about 45–50% of sales as prizes, so the long-run expectation is losing about half of what you
         spend. Treat it as entertainment with a fixed budget.
       </p>
@@ -356,20 +362,7 @@ function AboutTab() {
 
 // ---------------- Page ----------------
 
-/** Live data from the Pages Function, falling back to the build-time snapshot. */
-async function loadGame(k: GameKey): Promise<{ updated: string; draws: Draw[] }> {
-  try {
-    const res = await fetch(`/api/lotto/${k}`);
-    if (res.ok) return await res.json();
-  } catch {
-    // offline or running under `next dev` — use the snapshot
-  }
-  const res = await fetch(`/tools/lotto/data/${k}.json`);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json();
-}
-
-const TABS = ["Plan", "Tickets", "Simulate", "Check", "Stats", "About"] as const;
+const TABS = ["Plan", "Tickets", "Numbers", "Simulate", "Check", "Stats", "About"] as const;
 type Tab = (typeof TABS)[number];
 
 export default function LottoPage() {
@@ -381,7 +374,7 @@ export default function LottoPage() {
   const [installEvent, setInstallEvent] = useState<BeforeInstallPromptEvent | null>(null);
 
   useEffect(() => {
-    Promise.all(KEYS.map(loadGame))
+    Promise.all(KEYS.map((k) => loadDraws<Draw>(k)))
       .then((res) => {
         setData(Object.fromEntries(KEYS.map((k, i) => [k, res[i].draws])) as Data);
         setUpdated(res[0].updated);
@@ -413,7 +406,7 @@ export default function LottoPage() {
             <span className="gradient-text">Lotto</span> Picker
           </h1>
           <p className="mt-1 text-sm text-stone-500">
-            Loto 6 · Loto 7 · Mini Loto
+            Loto 6 · Loto 7 · Mini Loto · Numbers
             {updated && ` · updated ${new Date(updated).toLocaleDateString("en-CA")}`}
           </p>
         </div>
@@ -444,6 +437,7 @@ export default function LottoPage() {
       {!data && !error && <p className="text-sm text-stone-500">Loading draw history…</p>}
       {data && tab === "Plan" && <PlanTab data={data} onSave={(s) => updateSaved([...saved, ...s])} />}
       {data && tab === "Tickets" && <MyTicketsTab data={data} saved={saved} onDelete={(id) => updateSaved(saved.filter((s) => s.id !== id))} />}
+      {tab === "Numbers" && <NumbersTab />}
       {data && tab === "Simulate" && <Simulator data={data} />}
       {data && tab === "Check" && <CheckTab data={data} />}
       {data && tab === "Stats" && <StatsTab data={data} />}

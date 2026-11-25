@@ -10,6 +10,19 @@ export const pct = (p: number) => `${(p * 100).toFixed(1)}%`;
 
 export type Data = Record<GameKey, Draw[]>;
 
+/** Live draw history from the Pages Function, falling back to the build-time snapshot. */
+export async function loadDraws<T>(key: string): Promise<{ updated: string; draws: T[] }> {
+  try {
+    const res = await fetch(`/api/lotto/${key}`);
+    if (res.ok) return await res.json();
+  } catch {
+    // offline or running under `next dev` — use the snapshot
+  }
+  const res = await fetch(`/tools/lotto/data/${key}.json`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
 export function load<T>(key: string, fallback: T): T {
   try {
     const raw = localStorage.getItem(key);

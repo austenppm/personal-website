@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
-  title: "Lotto Picker — Loto 6 / Loto 7 / Mini Loto",
+  title: "Lotto Picker — Loto 6 / Loto 7 / Mini Loto / Numbers",
   description:
-    "Weekly Loto 6, Loto 7 and Mini Loto tickets that spread numbers across tickets and avoid popular picks, plus draw statistics and a ticket checker.",
+    "Loto 6, Loto 7, Mini Loto, Numbers 3 and Numbers 4 tickets that spread numbers across tickets and avoid popular picks, plus draw statistics and a ticket checker.",
   manifest: "/tools/lotto/manifest.webmanifest",
   icons: { apple: "/tools/lotto/apple-touch-icon.png" },
   appleWebApp: { title: "Lotto", statusBarStyle: "default" },

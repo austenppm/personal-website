@@ -1,4 +1,4 @@
-// Writes a snapshot of Mini Loto / Loto 6 / Loto 7 draw history to
+// Writes a snapshot of Mini Loto / Loto 6 / Loto 7 / Numbers 3 / Numbers 4 draw history to
 // public/tools/lotto/data/. The app prefers the live /api/lotto/<game>
 // function and falls back to this snapshot. On network failure the existing
 // files are kept so the build never breaks.
